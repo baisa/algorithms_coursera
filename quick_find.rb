@@ -15,28 +15,41 @@
  #int qid = id[q];
  #for (int i = 0; i < id.length; i++)
  #if (id[i] == pid) id[i] = qid;
- 
 
 
-def quickfind(array, int1, int2)
-  if array[int1] == array[int2]
-    puts "#{array[int1]} and #{array[int2]} are connected"
-  else
-    puts "#{array[int1]} and #{array[int2]} are not connected"
+def setarray(num)
+  # Array.new(5) { |i| i }
+  array = Array.new(num)
+  i = 0
+  a = array.map do |elem|
+    elem = i
+    i = i + 1
+    elem
   end
+  p a
+  a
+end
+
+def connected(array, int1, int2)
+  array[int1] == array[int2]
 end
 
 def union(array, int1, int2)
   x = array[int1]
   y = array[int2]
-  new = []
-  array.map do |elem|
+  array.each_with_index do |elem,i|
     if elem == x 
-      elem = y
+      array[i] = y
     end
-    new << elem 
   end
-  print new
 end
-union([0,1,2,3,4,5,6,7,8,9], 1, 2)
-quickfind([0,2,2,3,4,5,6,7,8,9], 1, 2)
+#setarray(6)
+#union([0,1,2,3,4,5,6,7,8,9], 1, 2)
+#puts connected([0,1,2,3,4,5,6,7,8,9], 1, 2)
+#puts connected([0,1,1,3,4,5,6,7,8,9], 1, 2)
+
+a = setarray(10)
+puts connected(a, 1, 2)
+union(a, 1, 2)
+print a
+puts connected(a, 1, 2)
