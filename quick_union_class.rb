@@ -12,12 +12,12 @@ class QuickUnion
   end 
 
   def connected(x, y)
-    @array.root(x) == @array.root(y)
+    root(x) == root(y)
   end
  
   def union(x, y)
-    i = @array.root(x)
-    j = @array.root(y)
+    i = root(x)
+    j = root(y)
     @array[i] = j
   end
 
